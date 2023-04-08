@@ -1,6 +1,6 @@
 function wordsUppercase(inputText) {
     
-    let pattern = /(?<word>[A-Za-z]+)/g;
+    let pattern = /(?<word>[A-Za-z0-9]+)/g;
     let mattchedWords = [...inputText.matchAll(pattern)];
     let extractedWords = [];
 
