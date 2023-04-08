@@ -16,5 +16,7 @@ function biggestElement(matrix) {
 //     [8, 3, 0, 4]
 // ]));
 
-console.log(biggestElement([[20, 50, 10],
-[8, 33, 145]]));
+console.log(biggestElement([
+    [20, 50, 10],
+    [8, 33, 145]]
+));
