@@ -1,0 +1,6 @@
+function lastKNumbersSequence(params) {
+    
+    
+}
+
+lastKNumbersSequence();
