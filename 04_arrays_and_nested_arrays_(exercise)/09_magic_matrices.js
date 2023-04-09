@@ -1,10 +1,5 @@
 function magicMatrices(matrix) {
 
-    if (matrix.length === 0) {
-        console.log(false);
-        return;
-    }
-    
     let horizontalNums = [];
     let verticalNums = [];
 
@@ -13,14 +8,14 @@ function magicMatrices(matrix) {
         for (let num of arr) {
             currentHorizontalSum += num;
         }
-        
+
         horizontalNums.push(currentHorizontalSum);
     }
 
     for (let i = 0; i < matrix[0].length; i++) {
         let currentVerticallSum = 0;
         for (let j = 0; j < matrix.length; j++) {
-            let currentNum = matrix[i][j];
+            let currentNum = matrix[j][i];
             currentVerticallSum += currentNum;
         }
 
@@ -38,9 +33,9 @@ function magicMatrices(matrix) {
         allNumsArr.push(num);
     }
 
-    let firstNum = allNumsArr.shift();
+    let firstNum = allNumsArr[0];
 
-    for(let num of allNumsArr) {
+    for (let num of allNumsArr) {
         if (num !== firstNum) {
             isEqual = false;
         }
@@ -55,11 +50,14 @@ magicMatrices([
     [5, 5, 5]
 ]);
 
-magicMatrices([[11, 32, 45],
+magicMatrices([
+    [11, 32, 45],
     [21, 0, 1],
-    [21, 1, 1]]
-   );
+    [21, 1, 1]
+]);
 
-   magicMatrices([[1, 0, 0],
+magicMatrices([
+    [1, 0, 0],
     [0, 0, 1],
-    [0, 1, 0]]);
+    [0, 1, 0]
+]);
