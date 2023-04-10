@@ -1,4 +1,4 @@
-function cityRecord(cityName, population, treasury) {
+function cityTaxes(cityName, population, treasury) {
 
     let obj1 = {
         name: cityName,
@@ -9,8 +9,4 @@ function cityRecord(cityName, population, treasury) {
     return obj1;
 }
 
-cityRecord(
-    'Tortuga',
-    7000,
-    15000
-);
+cityTaxes('Tortuga', 7000, 15000);
