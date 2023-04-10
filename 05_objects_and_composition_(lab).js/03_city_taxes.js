@@ -9,10 +9,10 @@ function cityTaxes(cityName, population, treasury) {
             this.treasury += this.population * this.taxRate;
         },
         applyGrowth(percentage) {
-            this.population = this.population + (this.population * (percentage / 100));
+            this.population = this.population + Math.floor(this.population * (percentage / 100));
         },
         applyRecession(percentage) {
-            this.treasury = this.treasury - (this.treasury * (percentage / 100));
+            this.treasury = this.treasury - Math.floor((this.treasury * (percentage / 100)));
         }
     }
 
