@@ -4,15 +4,15 @@ function fromJsonToHtmlTable(input) {
 
     let output = [];
     let firstLine = [];
-    
+
     output.push('<table>');
-    
+
     let keys = Object.keys(parsed[0]);
     if (keys.length > 0) {
         for (let key of keys) {
-            firstLine.push(`<th>${key}</th>`);
+            firstLine.push(`<th>${escapeHtml(key)}</th>`);
         }
-    
+
         output.push(`  <tr>${firstLine.join('')}</tr>`);
     }
 
@@ -20,7 +20,7 @@ function fromJsonToHtmlTable(input) {
         let secondLine = [];
         for (let key of keys) {
             let currentKey = obj[key];
-            secondLine.push(`<td>${currentKey}</td>`);
+            secondLine.push(`<td>${escapeHtml(currentKey)}</td>`);
         }
 
         output.push(`  <tr>${secondLine.join('')}</tr>`);
@@ -29,26 +29,76 @@ function fromJsonToHtmlTable(input) {
 
     output.push('</table>');
 
-    for (let line of output) {
-        console.log(line);
+    return output.join('\n');
+
+    // for (let line of output) {
+    //     console.log(line);
+    // }
+
+    function escapeHtml(input) {
+        let inputStr = input.toString();
+        let pattern = /[\&\<\>\"\']+/g;
+        let matched = [...inputStr.matchAll(pattern)];
+        let newStr = inputStr;
+
+        for (let match of matched) {
+
+            switch (match[0]) {
+                case '&': {
+                    newStr = newStr.split('&').join('&amp;');
+                    break;
+                }
+
+                case '<': {
+                    newStr = newStr.split('<').join('&lt;');
+                    break;
+                }
+
+                case '>': {
+                    newStr = newStr.split('>').join('&gt;');
+                    break;
+                }
+
+                case '"': {
+                    newStr = newStr.split('"').join('&quot;');
+                    break;
+                }
+
+                case '\'': {
+                    newStr = newStr.split('\'').join('&#039;');
+                    break;
+                }
+            }
+        }
+
+        return newStr;
     }
 }
 
-// console.log(fromJsonToHtmlTable(`[{"Name":"Stamat",
-// "Score":5.5},
-// {"Name":"Rumen",
-// "Score":6}]`
+console.log(fromJsonToHtmlTable(`[{"Name":"Stamat",
+"Score":5.5},
+{"Name":"Rumen",
+"Score":6}]`
+));
+
+// fromJsonToHtmlTable(`[{"Name":"Pesho",
+// "Score":4,
+// " Grade":8},
+// {"Name":"Gosho",
+// "Score":5,
+// " Grade":8},
+// {"Name":"Angel",
+// "Score":5.50,
+// " Grade":10}]`
+// );
+
+// console.log(fromJsonToHtmlTable(`[{"&Name<":"Pesho",
+// "Score":4,
+// " Grade":8},
+// {"Name":"Gosho",
+// "Score":5,
+// " Grade":8},
+// {"Name":"Angel",
+// "Score":5.50,
+// " Grade":10}]`
 // ));
-
-fromJsonToHtmlTable(`[{"Name":"Pesho",
-"Score":4,
-" Grade":8},
-{"Name":"Gosho",
-"Score":5,
-" Grade":8},
-{"Name":"Angel",
-"Score":5.50,
-" Grade":10}]`
-);
-
-
