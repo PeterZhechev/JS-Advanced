@@ -1,0 +1,5 @@
+function heroicInventory(params) {
+    
+}
+
+heroicInventory();
