@@ -5,7 +5,6 @@ function addItem() {
 
     let newLiElement = document.createElement('li');
     newLiElement.textContent = inputFieldElement.value;
-
     ulElements.appendChild(newLiElement);
 
     inputFieldElement.value = '';
