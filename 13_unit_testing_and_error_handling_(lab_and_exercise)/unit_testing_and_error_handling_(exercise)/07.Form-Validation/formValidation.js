@@ -72,7 +72,6 @@ function validate() {
             }
         }
 
-
         if (isUsername && isEmail && isPassword && isCompanyNumberValidField === false) {
             divValidElement.style.display = 'none';
         }
