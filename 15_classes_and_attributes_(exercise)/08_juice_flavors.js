@@ -1,5 +1,5 @@
 function juiceFlavors(arr) {
-    
+
     let obj = {};
     let bottles = new Map();
 
@@ -13,7 +13,7 @@ function juiceFlavors(arr) {
 
         for (let el in obj) {
             if (obj[el] >= 1000) {
-                while (obj[el] >= 1000) {                    
+                while (obj[el] >= 1000) {
                     obj[el] -= 1000;
                     if (!bottles.has(el)) {
                         bottles.set(el, 1);
@@ -27,13 +27,10 @@ function juiceFlavors(arr) {
         }
 
     }
-    
-    let bottlesArr = Array.from(bottles);
 
     for (let el of bottles) {
         console.log(`${el[0]} => ${el[1]}`);
     }
-    
 }
 
 
@@ -44,8 +41,8 @@ function juiceFlavors(arr) {
 // 'Strawberry => 549']);
 
 juiceFlavors(['Kiwi => 234',
-'Pear => 2345',
-'Watermelon => 3456',
-'Kiwi => 4567',
-'Pear => 5678',
-'Watermelon => 6789']);
+    'Pear => 2345',
+    'Watermelon => 3456',
+    'Kiwi => 4567',
+    'Pear => 5678',
+    'Watermelon => 6789']);
