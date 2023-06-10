@@ -22,5 +22,3 @@ const template = {
     extensionProperty: 'someString'
 }
 myObj.extend(template);
-
-console.log(myObj);
