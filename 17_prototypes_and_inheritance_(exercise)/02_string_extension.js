@@ -26,7 +26,7 @@
 
     String.prototype.truncate = function (n) {
         if (n < 3) {
-            return '...';
+            return '.'.repeat(n);
         }
 
         if (this.toString().length <= n) {
@@ -47,7 +47,6 @@
         }
         return str;
     }
-
 })();
 
 
